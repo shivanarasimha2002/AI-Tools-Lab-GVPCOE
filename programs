@@ -1,0 +1,160 @@
+install python3
+pip install numpy
+-----------------------------------------------------------------------------------
+##################################################
+Code 1:
+Write a Program to perform the following operations on matrices
+1) Matrix addition
+2) Matrix Subtraction
+3) Matrix Multiplication
+4) Matrix Inversion
+5) Transpose of a Matrix
+####################################################
+import numpy as np
+
+def input_matrix(rows,cols):
+    matrix = []
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            element = int(input(f"Enter the element at position {i+1}, {j+1}"))
+            row.append(element)
+        matrix.append(row)
+    return np.array(matrix)    
+
+def matrix_add(matrix1, matrix2):
+    return np.add(matrix1, matrix2)
+
+def matrix_sub(matrix1, matrix2):
+    return np.subtract(matrix1, matrix2)
+
+def matrix_mult(matrix1, matrix2):
+    return np.dot(matrix1, matrix2)
+
+def matrix_inverse(matrix):
+    return np.linalg.inv(matrix)
+
+def matrix_transpose(matrix):
+    return matrix.T
+
+if __name__ == "__main__":
+
+    rows1 = int(input("Enter the number of rows for the Matrix 1: "))
+    cols1 = int(input("Enter the number of columns for the Matrix 1: "))
+    matrix1 = input_matrix(rows1,cols1)
+
+    rows2 = int(input("Enter the number of rows for the Matrix 2: "))
+    cols2 = int(input("Enter the number of columns for the Matrix 2: "))
+    matrix2 = input_matrix(rows2,cols2)
+
+    result_add = matrix_add(matrix1, matrix2)
+    print("Matrix Addition: ")
+    print(result_add)
+
+    result_sub = matrix_sub(matrix1, matrix2)
+    print("Matrix Subtraction: ")
+    print(result_sub)
+
+    try:
+        result_mult = matrix_mult(matrix1, matrix2)
+        print("Matrix Multiplication: ")
+        print(result_mult)
+    except ValueError as e:
+        print("Matrix multiplicagtion cannot be performed\n Make sure the number of columns in Matrix1 is equal to the number of rows in Matrix2")
+
+    print("Matrix Transpose (Matrix 1): ")
+    print(matrix_transpose(matrix1)) 
+    print("Matrix Transpose (Matrix 2): ")
+    print(matrix_transpose(matrix2)) 
+
+    try:
+        inverse_matrix1 = matrix_inverse(matrix1)
+        inverse_matrix2 = matrix_inverse(matrix2)
+        print("Matrix Inverse (Matrix 1): ")
+        print(inverse_matrix1)
+        print("Matrix Inverse (Matrix 2): ")
+        print(inverse_matrix2)
+    except np.linalg.LinAlgError as e:
+        print("Matrix is not invertible")
+
+###########################################################
+Code 2:
+Write a Program to perform the following operations
+1) Find the minimum and maximum element of the matrix
+2) Find the minimum and maximum element of each row in the matrix
+3) Find the minimum and maximum element of each column in the matrix
+4) Find trace of the given matrix
+5) Find rank of the given matrix
+6) Find eigenvalues and eigenvectors of the given matrix
+
+###########################################################
+import numpy as np
+
+def input_matrix(rows, cols):
+    matrix = []
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            element = int(input(f"Enter the element at position {i+1}, {j+1} :"))
+            row.append(element)
+        matrix.append(row)
+    return np.array(matrix)
+
+def find_min_max(matrix):
+    min_elements = np.min(matrix)
+    max_elements = np.max(matrix)
+    return min_elements, max_elements
+
+def find_min_max_row(matrix):
+    min_elements = np.min(matrix, axis=1)
+    max_elements = np.max(matrix, axis=1)
+    return min_elements, max_elements
+
+def find_min_max_cols(matrix):
+    min_elements = np.min(matrix, axis=0)
+    max_elements = np.max(matrix, axis=0)
+    return min_elements, max_elements
+
+def find_trace(matrix):
+    return np.trace(matrix)
+
+def find_rank(matrix):
+    return np.linalg.matrix_rank(matrix)
+
+def find_eigen(matrix):
+    eigenvalues, eigenvectors = np.linalg.eig(matrix)
+    return eigenvalues, eigenvectors
+
+if __name__ == "__main__":
+
+    rows = int(input("Enter the number of rows for the Matrix: "))
+    cols = int(input("Enter the number of columns for the Matrix: "))
+    matrix = input_matrix(rows, cols)
+
+    print("Matrix:")
+    print(matrix)
+
+    min_elements, max_elements = find_min_max(matrix)
+    print("Minimum Element of the matrix: ", min_elements)
+    print("Maximun Element of the Matrix: ", max_elements)
+
+    min_elements_row, max_elements_row = find_min_max_row(matrix)
+    print("Minimum Element of Each Row: ", min_elements_row)
+    print("Maximun Element of Each Row: ", max_elements_row)
+
+    min_elements_cols, max_elements_cols = find_min_max_cols(matrix)
+    print("Minimum Element of Each Column: ", min_elements_cols)
+    print("Maximun Element of Each Column: ", max_elements_cols)
+
+    trace = find_trace(matrix)
+    print("Trace of the Matrix:", trace)
+
+    rank = find_rank(matrix)
+    print("Rank of the Matrix:", rank)
+
+    eigenvalues, eigenvectors = find_eigen(matrix)
+    print("Eigenvalues:")
+    print(eigenvalues)
+    print("Eigenvectors: ")
+    print(eigenvectors)
+        
