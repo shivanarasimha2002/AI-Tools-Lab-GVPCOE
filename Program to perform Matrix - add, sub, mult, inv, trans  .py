@@ -1,3 +1,4 @@
+'''
 install python3
 pip install numpy
 -----------------------------------------------------------------------------------
@@ -10,6 +11,8 @@ Write a Program to perform the following operations on matrices
 4) Matrix Inversion
 5) Transpose of a Matrix
 ####################################################
+'''
+
 import numpy as np
 
 def input_matrix(rows,cols):
