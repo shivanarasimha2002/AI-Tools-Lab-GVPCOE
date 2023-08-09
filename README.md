@@ -35,10 +35,11 @@ Mostly, used in various fields such as data science, machine learning, engineeri
    3) np.concatenate()
    4) np.split()
 and so on ....
+
 Link to learn NumPy : https://numpy.org/doc/stable/user/basics.html
 
 ------------------------
 
 About Pandas 
-soon ...
+ This library is used for data manipulation, analysis, and cleaning. 
 
